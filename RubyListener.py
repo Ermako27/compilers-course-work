@@ -262,11 +262,11 @@ class RubyListener(ParseTreeListener):
 
     # Enter a parse tree produced by RubyParser#if_statement.
     def enterIf_statement(self, ctx:RubyParser.If_statementContext):
-        method_list = [method for method in dir(ctx) if method.startswith('__') is False]
-        print('ctx methods', method_list)
-        print('---------------------------------------\n');
+        # method_list = [method for method in dir(ctx) if method.startswith('__') is False]
+        # print('ctx methods', method_list)
+        # print('---------------------------------------\n');
 
-        print("ctx.getText", ctx.getText())
+        # print("ctx.getText", ctx.getText())
         pass
 
     # Exit a parse tree produced by RubyParser#if_statement.

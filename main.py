@@ -5,7 +5,7 @@ from RubyParser import RubyParser
 from CustomRubyListener import CustomRubyListener
  
 def main():
-    input_stream = FileStream('./main.rb')
+    input_stream = FileStream('./tests/sample.rb')
     lexer = RubyLexer(input_stream)
     stream = CommonTokenStream(lexer)
     parser = RubyParser(stream)
