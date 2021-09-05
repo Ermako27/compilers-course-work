@@ -5,10 +5,12 @@ from hashtable import HashTable
 from io import BytesIO
 from llist import sllist, sllistnode
 
+from scope import Scope, ScopeVariable
+
 from graph import Graph
 
 class CustomRubyListener(RubyListener):     
-    def __init__(self) -> None:
+    def __init__(self, codeFileName) -> None:
         super().__init__()
         self.intValues = ParseTreeProperty()
         self.floatValues = ParseTreeProperty()
@@ -30,30 +32,42 @@ class CustomRubyListener(RubyListener):
         self.mainDefinitions = sllist()
         self.functionCalls = []
         self.stackDefinitions = []
+        # ========================================
 
-        self.graph = Graph()
+        self.scopeStack = []
+        self.graph = Graph(codeFileName)
 
-    
+    def getFunctionName(self, ctx:RubyParser.Function_definitionContext):
+        functionHeaderNode = ctx.getChild(0)
+        functionNameNode = functionHeaderNode.getChild(1)
+        id = functionNameNode.getChild(0);
+        functionName = id.getText()
+        return functionName
 
-    def isDefined(self, defenitions, variable):
-        for value in defenitions.itervalues():
-            if value == variable:
-                return True
-        return False
+    def getInitialArrayAssignmentValue(self, ctx:RubyParser.Initial_array_assignmentContext):
+        value = ''
+        for i in range(2, len(ctx.children)):
+            char = ctx.children[i].getText();
+            value += char;
+        return value
+        
 
-    def repeat(self, string, times):
-        if times <= 1:
-            return ""
-        else:
-            return string + self.repeat(string, times - 1)
 
     # Enter a parse tree produced by RubyParser#prog.
     def enterProg(self, ctx:RubyParser.ProgContext):
+        # создаем глобальный scope
+        ruleId = ctx.getRuleIndex()
+        ruleName = RubyParser.ruleNames[ruleId]
+        newScope = Scope(ruleName, "global")
+
+        self.scopeStack.append(newScope)
+
         self.graph.addRuleNode(ctx)
         
 
     # Exit a parse tree produced by RubyParser#prog.
     def exitProg(self, ctx:RubyParser.ProgContext):
+        rootScope = self.scopeStack.pop()
         self.graph.renderRuleTree()
         pass
 
@@ -150,11 +164,34 @@ class CustomRubyListener(RubyListener):
 
     # Enter a parse tree produced by RubyParser#function_definition.
     def enterFunction_definition(self, ctx:RubyParser.Function_definitionContext):
+        scope = self.scopeStack.pop()
+
+        functionName = self.getFunctionName(ctx)
+        ruleId = ctx.getRuleIndex()
+        ruleName = RubyParser.ruleNames[ruleId]
+
+        # создаем переменную - функцию
+        variable = ScopeVariable(functionName, ruleName)
+        # кладем переменную-функцию в текущий scope
+        scope.addVariable(variable)
+
+        # создаем новый scope - для новой функции, которая сейчас объявляется
+        newScope = Scope(functionName, 'function ')
+        # добавляем в текущий scope с вершины стека только что созданный новый scope функции
+        scope.addScope(newScope)
+
+        # возвращаем в стек текущий scope и кладем на вершину newScope для только что созданной функции
+        self.scopeStack.append(scope)
+        self.scopeStack.append(newScope)
+
         self.graph.addRuleNode(ctx)
-        
 
     # Exit a parse tree produced by RubyParser#function_definition.
     def exitFunction_definition(self, ctx:RubyParser.Function_definitionContext):
+        print('[ exit ] uid: {0} | rule: function_definition \n'.format(ctx.uid))
+
+        # как только закончили обходить поддерево функции выкидываем ее scope из стека
+        self.scopeStack.pop()
         pass
 
 
@@ -210,6 +247,17 @@ class CustomRubyListener(RubyListener):
 
     # Enter a parse tree produced by RubyParser#function_definition_param_id.
     def enterFunction_definition_param_id(self, ctx:RubyParser.Function_definition_param_idContext):
+        # достаем текущий scope
+        scope = self.scopeStack.pop()
+
+        # создаем переменную-аргумент
+        argName = ctx.getText();
+        variable = ScopeVariable(argName, 'argument')
+        # кладем эту переменную в scope
+        scope.addVariable(variable)
+
+        # возвращаем scope обратно в стек
+        self.scopeStack.append(scope)
         self.graph.addRuleNode(ctx)
         
 
@@ -466,6 +514,18 @@ class CustomRubyListener(RubyListener):
 
     # Enter a parse tree produced by RubyParser#dynamic_assignment.
     def enterDynamic_assignment(self, ctx:RubyParser.Dynamic_assignmentContext):
+        scope = self.scopeStack.pop()
+
+        lvalue = ctx.getChild(0)
+        result = ctx.getChild(2)
+        varName = lvalue.getText()
+        varValue = result.getText()
+        ruleId = ctx.getRuleIndex()
+        ruleName = RubyParser.ruleNames[ruleId]
+        variable = ScopeVariable(varName, ruleName, varValue)
+
+        scope.addVariable(variable)
+        self.scopeStack.append(scope)
         self.graph.addRuleNode(ctx)
         
 
@@ -476,6 +536,16 @@ class CustomRubyListener(RubyListener):
 
     # Enter a parse tree produced by RubyParser#int_assignment.
     def enterInt_assignment(self, ctx:RubyParser.Int_assignmentContext):
+        scope = self.scopeStack.pop()
+
+        lvalue = ctx.getChild(0)
+        result = ctx.getChild(2)
+        varName = lvalue.getText()
+        varValue = result.getText()
+        variable = ScopeVariable(varName, 'int', varValue)
+
+        scope.addVariable(variable)
+        self.scopeStack.append(scope)
         self.graph.addRuleNode(ctx)
         
 
@@ -486,6 +556,16 @@ class CustomRubyListener(RubyListener):
 
     # Enter a parse tree produced by RubyParser#float_assignment.
     def enterFloat_assignment(self, ctx:RubyParser.Float_assignmentContext):
+        scope = self.scopeStack.pop()
+
+        lvalue = ctx.getChild(0)
+        result = ctx.getChild(2)
+        varName = lvalue.getText()
+        varValue = result.getText()
+        variable = ScopeVariable(varName, 'string', varValue)
+
+        scope.addVariable(variable)
+        self.scopeStack.append(scope)
         self.graph.addRuleNode(ctx)
         
 
@@ -496,6 +576,16 @@ class CustomRubyListener(RubyListener):
 
     # Enter a parse tree produced by RubyParser#string_assignment.
     def enterString_assignment(self, ctx:RubyParser.String_assignmentContext):
+        scope = self.scopeStack.pop()
+
+        lvalue = ctx.getChild(0)
+        result = ctx.getChild(2)
+        varName = lvalue.getText()
+        varValue = result.getText()
+        variable = ScopeVariable(varName, 'string', varValue)
+
+        scope.addVariable(variable)
+        self.scopeStack.append(scope)
         self.graph.addRuleNode(ctx)
         
 
@@ -506,6 +596,15 @@ class CustomRubyListener(RubyListener):
 
     # Enter a parse tree produced by RubyParser#initial_array_assignment.
     def enterInitial_array_assignment(self, ctx:RubyParser.Initial_array_assignmentContext):
+        scope = self.scopeStack.pop()
+
+        lvalue = ctx.getChild(0)
+        varName = lvalue.getText()
+        varValue = self.getInitialArrayAssignmentValue(ctx)
+        variable = ScopeVariable(varName, 'array', varValue)
+
+        scope.addVariable(variable)
+        self.scopeStack.append(scope)
         self.graph.addRuleNode(ctx)
         
 
@@ -678,10 +777,6 @@ class CustomRubyListener(RubyListener):
 
     # Enter a parse tree produced by RubyParser#int_t.
     def enterInt_t(self, ctx:RubyParser.Int_tContext):
-        print(ctx.getChildCount())
-
-        child = ctx.getChild(0);
-        dchild = child.getChild(0);
         self.graph.addRuleNode(ctx)
 
     # Exit a parse tree produced by RubyParser#int_t.

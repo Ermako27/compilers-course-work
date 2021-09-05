@@ -5,8 +5,9 @@ from RubyParser import RubyParser
 
 
 class Graph():
-    def __init__(self) -> None:
+    def __init__(self,codeFileName) -> None:
         self.ruleTree = graphviz.Digraph(comment='The Round Table')
+        self.codeFileName = codeFileName
 
     def isLeaf(self, ctx):
         if hasattr(ctx, 'children') and ctx.children != None:
@@ -33,6 +34,8 @@ class Graph():
         ruleName = RubyParser.ruleNames[ruleId]
         self.ruleTree.node(ctx.uid, ruleName)
 
+        print('[ enter ] uid: {0} | rule: {1} \n'.format(ctx.uid, ruleName))
+
         if ctx.parentCtx != None:
             self.ruleTree.edge(ctx.parentCtx.uid, ctx.uid)
 
@@ -41,8 +44,8 @@ class Graph():
                 if self.isLeaf(child):
                     leafUid = uuid.uuid4().hex
                     leafValue = child.getText()
-                    self.ruleTree.node(leafUid, leafValue)
+                    self.ruleTree.node(leafUid, str(leafValue))
                     self.ruleTree.edge(ctx.uid, leafUid)
 
     def renderRuleTree(self):
-        self.ruleTree.render('ruleTree', './img')
+        self.ruleTree.render('ruleTree_{0}'.format(self.codeFileName), './img')

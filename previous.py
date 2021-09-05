@@ -111,3 +111,17 @@
     #     child = ctx.getChild(2).getText()
 
     #     self.stackOutputStreams.append(out)
+
+
+
+    def isDefined(self, defenitions, variable):
+        for value in defenitions.itervalues():
+            if value == variable:
+                return True
+        return False
+
+    def repeat(self, string, times):
+        if times <= 1:
+            return ""
+        else:
+            return string + self.repeat(string, times - 1)
