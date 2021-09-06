@@ -358,12 +358,30 @@ class CustomRubyListener(RubyListener):
 
     # Enter a parse tree produced by RubyParser#elsif_statement.
     def enterElsif_statement(self, ctx:RubyParser.Elsif_statementContext):
+        ifScope = self.scopeStack.pop()
+        beforeIfScope = self.scopeStack.pop()
+
+        ruleId = ctx.getRuleIndex()
+        ruleName = RubyParser.ruleNames[ruleId]
+        newScope = Scope(ruleName, 'block')
+
+        beforeIfScope.addScope(newScope)
+
+        self.scopeStack.append(beforeIfScope)
+        self.scopeStack.append(ifScope)
+        self.scopeStack.append(newScope)
+        
         self.graph.addRuleNode(ctx)
         
 
     # Exit a parse tree produced by RubyParser#elsif_statement.
     def exitElsif_statement(self, ctx:RubyParser.Elsif_statementContext):
-        pass
+        scope = self.scopeStack.pop()
+
+        # если последний скоуп - else, то значит предпоследний - elseif
+        # у else нет своего места где его можно закрыть
+        if scope.name == 'else_token':
+            self.scopeStack.pop()
 
 
     # Enter a parse tree produced by RubyParser#if_elsif_statement.
@@ -378,18 +396,28 @@ class CustomRubyListener(RubyListener):
 
     # Enter a parse tree produced by RubyParser#if_statement.
     def enterIf_statement(self, ctx:RubyParser.If_statementContext):
-        self.graph.addRuleNode(ctx)
-        # method_list = [method for method in dir(ctx) if method.startswith('__') is False]
-        # print('ctx methods', method_list)
-        # print('---------------------------------------\n');
+        scope = self.scopeStack.pop()
 
-        # print("ctx.getText", ctx.getText())
+        ruleId = ctx.getRuleIndex()
+        ruleName = RubyParser.ruleNames[ruleId]
+        newScope = Scope(ruleName, 'block')
+
+        scope.addScope(newScope)
+
+        self.scopeStack.append(scope)
+        self.scopeStack.append(newScope)
+
+        self.graph.addRuleNode(ctx)
         
 
     # Exit a parse tree produced by RubyParser#if_statement.
     def exitIf_statement(self, ctx:RubyParser.If_statementContext):
-        # print('exitIf_statement', ctx)
-        pass
+        scope = self.scopeStack.pop()
+
+        # если последний скоуп - else, то значит предпоследний - if
+        # у else нет своего места где его можно закрыть
+        if scope.name == 'else_token':
+            self.scopeStack.pop()
 
 
     # Enter a parse tree produced by RubyParser#unless_statement.
@@ -852,6 +880,31 @@ class CustomRubyListener(RubyListener):
 
     # Enter a parse tree produced by RubyParser#else_token.
     def enterElse_token(self, ctx:RubyParser.Else_tokenContext):
+        scope = self.scopeStack.pop()
+
+        ruleId = ctx.getRuleIndex()
+        ruleName = RubyParser.ruleNames[ruleId]
+        newScope = Scope(ruleName, 'block')
+
+        if scope.name == 'elsif_statement':
+            ifScope = self.scopeStack.pop()
+            beforeIfScope = self.scopeStack.pop()
+
+            beforeIfScope.addScope(newScope)
+
+            self.scopeStack.append(beforeIfScope)
+            self.scopeStack.append(ifScope)
+            self.scopeStack.append(scope)
+            self.scopeStack.append(newScope)
+        elif scope.name == 'if_statement':
+            beforeIfScope = self.scopeStack.pop()
+
+            beforeIfScope.addScope(newScope)
+
+            self.scopeStack.append(beforeIfScope)
+            self.scopeStack.append(scope)
+            self.scopeStack.append(newScope)
+
         self.graph.addRuleNode(ctx)
 
     # Exit a parse tree produced by RubyParser#else_token.

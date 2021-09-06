@@ -6,7 +6,7 @@ from CustomRubyListener import CustomRubyListener
  
 def main(argv):
     # codeFileName = argv[1]
-    codeFileName = 'bubbleSort'
+    codeFileName = 'sample7'
     input_stream = FileStream('./tests/{0}.rb'.format(codeFileName))
     lexer = RubyLexer(input_stream)
     stream = CommonTokenStream(lexer)
