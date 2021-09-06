@@ -8,8 +8,15 @@ class Scope:
         self.variables = []
         self.uid = uuid.uuid4().hex
 
+    def isVariableAlreadyExists(self, variable):
+        for varInScope in self.variables:
+            if varInScope.name == variable.name:
+                return True
+        return False
+
     def addVariable(self, variable):
-        self.variables.append(variable)
+        if not self.isVariableAlreadyExists(variable):
+            self.variables.append(variable)
 
 
     def addScope(self, scope):

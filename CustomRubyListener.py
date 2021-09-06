@@ -176,7 +176,7 @@ class CustomRubyListener(RubyListener):
         scope.addVariable(variable)
 
         # создаем новый scope - для новой функции, которая сейчас объявляется
-        newScope = Scope(functionName, 'function ')
+        newScope = Scope(functionName, 'function')
         # добавляем в текущий scope с вершины стека только что созданный новый scope функции
         scope.addScope(newScope)
 
@@ -414,11 +414,23 @@ class CustomRubyListener(RubyListener):
 
     # Enter a parse tree produced by RubyParser#for_statement.
     def enterFor_statement(self, ctx:RubyParser.For_statementContext):
+        scope = self.scopeStack.pop()
+
+        ruleId = ctx.getRuleIndex()
+        ruleName = RubyParser.ruleNames[ruleId]
+        newScope = Scope(ruleName, 'block')
+
+        scope.addScope(newScope)
+
+        self.scopeStack.append(scope)
+        self.scopeStack.append(newScope)
+
         self.graph.addRuleNode(ctx)
         
 
     # Exit a parse tree produced by RubyParser#for_statement.
     def exitFor_statement(self, ctx:RubyParser.For_statementContext):
+        self.scopeStack.pop()
         pass
 
 
