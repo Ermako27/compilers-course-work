@@ -432,12 +432,22 @@ class CustomRubyListener(RubyListener):
 
     # Enter a parse tree produced by RubyParser#while_statement.
     def enterWhile_statement(self, ctx:RubyParser.While_statementContext):
+        scope = self.scopeStack.pop()
+
+        ruleId = ctx.getRuleIndex()
+        ruleName = RubyParser.ruleNames[ruleId]
+        newScope = Scope(ruleName, 'block')
+
+        scope.addScope(newScope)
+
+        self.scopeStack.append(scope)
+        self.scopeStack.append(newScope)
         self.graph.addRuleNode(ctx)
         
 
     # Exit a parse tree produced by RubyParser#while_statement.
     def exitWhile_statement(self, ctx:RubyParser.While_statementContext):
-        pass
+        self.scopeStack.pop()
 
 
     # Enter a parse tree produced by RubyParser#for_statement.
