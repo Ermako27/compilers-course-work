@@ -6,6 +6,8 @@ from io import BytesIO
 from llist import sllist, sllistnode
 
 from scope import Scope, ScopeVariable
+from functionCall import FunctionCall
+from functionScope import FunctionScope
 
 from graph import Graph
 
@@ -35,6 +37,7 @@ class CustomRubyListener(RubyListener):
         # ========================================
 
         self.scopeStack = []
+        self.functionScopeStack = []
         self.graph = Graph(codeFileName)
 
     def getFunctionName(self, ctx:RubyParser.Function_definitionContext):
@@ -59,8 +62,11 @@ class CustomRubyListener(RubyListener):
         ruleId = ctx.getRuleIndex()
         ruleName = RubyParser.ruleNames[ruleId]
         newScope = Scope(ruleName, "global")
-
         self.scopeStack.append(newScope)
+
+        # создаем стек функциональных скоупов
+        functionScope = FunctionScope(ruleName)
+        self.functionScopeStack.append(functionScope)
 
         self.graph.addRuleNode(ctx)
         
@@ -68,6 +74,7 @@ class CustomRubyListener(RubyListener):
     # Exit a parse tree produced by RubyParser#prog.
     def exitProg(self, ctx:RubyParser.ProgContext):
         rootScope = self.scopeStack.pop()
+        rootFunctionScope = self.functionScopeStack.pop()
         self.graph.renderRuleTree()
         pass
 
@@ -184,6 +191,14 @@ class CustomRubyListener(RubyListener):
         self.scopeStack.append(scope)
         self.scopeStack.append(newScope)
 
+        # ============================================
+        functionScope = self.functionScopeStack.pop()
+        newFunctionScope = FunctionScope(functionName)
+        functionScope.addFunctionScope(functionName, newFunctionScope)
+        self.functionScopeStack.append(functionScope)
+        self.functionScopeStack.append(newFunctionScope)
+
+
         self.graph.addRuleNode(ctx)
 
     # Exit a parse tree produced by RubyParser#function_definition.
@@ -192,6 +207,7 @@ class CustomRubyListener(RubyListener):
 
         # как только закончили обходить поддерево функции выкидываем ее scope из стека
         self.scopeStack.pop()
+        self.functionScopeStack.pop()
         pass
 
 
@@ -278,6 +294,12 @@ class CustomRubyListener(RubyListener):
 
     # Enter a parse tree produced by RubyParser#function_call.
     def enterFunction_call(self, ctx:RubyParser.Function_callContext):
+        functionScope = self.functionScopeStack.pop()
+
+        functionNameNode = ctx.getChild(0);
+        functionName = functionNameNode.getText()
+        functionScope.addFunctionCall(functionName)
+        self.functionScopeStack.append(functionScope)
         self.graph.addRuleNode(ctx)
         
 
