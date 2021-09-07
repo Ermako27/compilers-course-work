@@ -76,6 +76,7 @@ class CustomRubyListener(RubyListener):
         rootScope = self.scopeStack.pop()
         rootFunctionScope = self.functionScopeStack.pop()
         self.graph.renderRuleTree()
+        self.graph.renderScopeTree(rootScope)
         self.graph.renderCallTree(rootFunctionScope)
         pass
 

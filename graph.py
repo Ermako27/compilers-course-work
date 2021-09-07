@@ -1,13 +1,15 @@
 import uuid
 import graphviz
 
+from graphviz import Digraph, Source
+
 from RubyParser import RubyParser
 
 
 class Graph():
     def __init__(self,codeFileName) -> None:
-        self.ruleTree = graphviz.Digraph(comment='The Round Table')
-        self.callTree = graphviz.Digraph(comment='The Round Table')
+        self.ruleTree = Digraph(comment='The Round Table')
+        self.callTree = Digraph(comment='The Round Table')
         self.codeFileName = codeFileName
 
     def isLeaf(self, ctx):
@@ -24,12 +26,6 @@ class Graph():
         else:
             uid = uuid.uuid4().hex
             ctx.uid = uid 
-
-        # try:
-        #     uid = ctx.uid
-        # except:
-        #     uid = uuid.uuid4().hex
-        #     ctx.uid = uid
 
         ruleId = ctx.getRuleIndex()
         ruleName = RubyParser.ruleNames[ruleId]
@@ -70,3 +66,59 @@ class Graph():
             childFunctionScope = self.findFunctionScope(node, functionCall)
             if childFunctionScope.name != node.name:
                 self.createCallTree(childFunctionScope)
+
+    def createNodeTemplate(self, scope, tableRows):
+        template = """
+\n{0} [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>{1}</td>
+            <td>{2}</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        {3}
+         </table>
+>];""".format(str(scope.uid), scope.name, scope.type, tableRows)
+        return template
+    
+    def createNodeRows(self, scope):
+        result = ''
+        for variable in scope.variables:
+            result += """
+<tr>
+    <td>{0}</td>
+    <td>{1}</td>
+    <td>{2}</td>
+</tr>""".format(variable.name, variable.type, variable.value)
+        return result
+    
+    def createScopeTree(self, scope):
+        result = ''
+        nodeRows = self.createNodeRows(scope);
+        node = self.createNodeTemplate(scope, nodeRows)
+        result += node
+        
+        for childScope in scope.childScopes:
+            result += "\n{} -> {}".format(str(scope.uid), str(childScope.uid));
+        
+        for childScope in scope.childScopes:
+            result += self.createScopeTree(childScope)
+        return result
+    
+    def renderScopeTree(self, scope):
+        scopeTree = self.createScopeTree(scope)
+        resultGraph = "digraph G {\n" + scopeTree + "}"
+
+        renderer = Source(resultGraph, "varScopes_{0}".format(self.codeFileName), './img', 'pdf')
+        renderer.render()
+

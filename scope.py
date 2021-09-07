@@ -6,7 +6,7 @@ class Scope:
         self.type = type
         self.childScopes = []
         self.variables = []
-        self.uid = uuid.uuid4().hex
+        self.uid = uuid.uuid4().int
 
     def isVariableAlreadyExists(self, variable):
         for varInScope in self.variables:
