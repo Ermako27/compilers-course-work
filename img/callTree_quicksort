@@ -1,0 +1,14 @@
+// The Round Table
+digraph {
+	prog [label=prog]
+	quicksort [label=quicksort]
+	prog -> quicksort
+	partition [label=partition]
+	quicksort -> partition
+	printer [label=printer]
+	partition -> printer
+	quicksort [label=quicksort]
+	quicksort -> quicksort
+	quicksort [label=quicksort]
+	quicksort -> quicksort
+}

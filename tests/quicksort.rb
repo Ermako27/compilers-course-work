@@ -12,6 +12,12 @@ def partition(arr, first, last)
     pivot = arr[last]
     p_index = first
     
+    def printer
+        a = 'hello'
+        b = 'world'
+        return a
+    end
+
     i = first
     while i < last
       if arr[i] <= pivot
@@ -22,6 +28,8 @@ def partition(arr, first, last)
       end
       i += 1
     end
+
+    c = printer()
     temp = arr[p_index]
     arr[p_index] = pivot
     arr[last] = temp

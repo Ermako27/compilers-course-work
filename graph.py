@@ -7,6 +7,7 @@ from RubyParser import RubyParser
 class Graph():
     def __init__(self,codeFileName) -> None:
         self.ruleTree = graphviz.Digraph(comment='The Round Table')
+        self.callTree = graphviz.Digraph(comment='The Round Table')
         self.codeFileName = codeFileName
 
     def isLeaf(self, ctx):
@@ -34,7 +35,7 @@ class Graph():
         ruleName = RubyParser.ruleNames[ruleId]
         self.ruleTree.node(ctx.uid, ruleName)
 
-        print('[ enter ] uid: {0} | rule: {1} \n'.format(ctx.uid, ruleName))
+        # print('[ enter ] uid: {0} | rule: {1} \n'.format(ctx.uid, ruleName))
 
         if ctx.parentCtx != None:
             self.ruleTree.edge(ctx.parentCtx.uid, ctx.uid)
@@ -49,3 +50,23 @@ class Graph():
 
     def renderRuleTree(self):
         self.ruleTree.render('ruleTree_{0}'.format(self.codeFileName), './img')
+
+    def renderCallTree(self, rootNode):
+        self.callTree.node(rootNode.name, rootNode.name)
+        self.createCallTree(rootNode)
+        self.callTree.render('callTree_{0}'.format(self.codeFileName), './img')
+
+    def findFunctionScope(self, scope, scopeName):
+        if scopeName in scope.childrenFunctionScope:
+            return scope.childrenFunctionScope[scopeName]
+        else:
+            return self.findFunctionScope(scope.parentScope, scopeName)
+
+    def createCallTree(self, node):
+        for functionCall in node.functionCalls:
+            self.callTree.node(functionCall, functionCall)
+            self.callTree.edge(node.name, functionCall)
+
+            childFunctionScope = self.findFunctionScope(node, functionCall)
+            if childFunctionScope.name != node.name:
+                self.createCallTree(childFunctionScope)

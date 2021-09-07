@@ -10,6 +10,11 @@ def main(argv):
     input_stream = FileStream('./tests/{0}.rb'.format(codeFileName))
     lexer = RubyLexer(input_stream)
     stream = CommonTokenStream(lexer)
+    # allTokens = lexer.getAllTokens()
+    # print(lexer.getAllTokens())
+    # print(lexer.nextToken())
+    # print(lexer.nextToken())
+    # print(lexer.nextToken())
     parser = RubyParser(stream)
     tree = parser.prog()
     printer = CustomRubyListener(codeFileName)
@@ -18,3 +23,6 @@ def main(argv):
  
 if __name__ == '__main__':
     main(sys.argv)
+
+
+# поток токенов, ошибки
