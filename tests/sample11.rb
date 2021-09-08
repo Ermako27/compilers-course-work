@@ -1,8 +1,7 @@
 mas = [1,2,3]
 j = 10
 counter = 0
-
-
+step = 1
 def foo
     while j>=0 && mas[j] > mas[j+step]
         buf = mas[j]

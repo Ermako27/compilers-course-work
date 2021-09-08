@@ -36,9 +36,19 @@ class CustomRubyListener(RubyListener):
         self.stackDefinitions = []
         # ========================================
 
-        self.scopeStack = []
-        self.functionScopeStack = []
+        self.scopeStack = [] # для построение таблицы переменных, тут лежат все скоупы, и функциональные и блочные и глобальные
+        self.functionScopeStack = [] # для построения графа вызова, тут только функциональные
         self.graph = Graph(codeFileName)
+
+    def isVariableInScope(self, scope, variableName):
+        for var in scope.variables:
+            if var.name == variableName:
+                return True
+        
+        if scope.parentScope == None:
+            return False
+        else:
+            return self.isVariableInScope(scope.parentScope, variableName)
 
     def getFunctionName(self, ctx:RubyParser.Function_definitionContext):
         functionHeaderNode = ctx.getChild(0)
@@ -205,8 +215,6 @@ class CustomRubyListener(RubyListener):
 
     # Exit a parse tree produced by RubyParser#function_definition.
     def exitFunction_definition(self, ctx:RubyParser.Function_definitionContext):
-        print('[ exit ] uid: {0} | rule: function_definition \n'.format(ctx.uid))
-
         # как только закончили обходить поддерево функции выкидываем ее scope из стека
         self.scopeStack.pop()
         self.functionScopeStack.pop()
@@ -296,12 +304,22 @@ class CustomRubyListener(RubyListener):
 
     # Enter a parse tree produced by RubyParser#function_call.
     def enterFunction_call(self, ctx:RubyParser.Function_callContext):
-        functionScope = self.functionScopeStack.pop()
-
         functionNameNode = ctx.getChild(0);
         functionName = functionNameNode.getText()
-        functionScope.addFunctionCall(functionName)
-        self.functionScopeStack.append(functionScope)
+
+        # проверяем есть ли вообще такая функция в текущем скоупе или в одном из родительском
+        currentScope = self.scopeStack.pop()
+        isFunctionAvaliable = self.isVariableInScope(currentScope, functionName)
+        if isFunctionAvaliable:
+            # добавляем вызов функции в текущий функциональный scope
+            functionScope = self.functionScopeStack.pop()
+            functionScope.addFunctionCall(functionName)
+            self.functionScopeStack.append(functionScope)
+            self.scopeStack.append(currentScope)
+        else:
+            raise Exception("Function < {0} > is not defined".format(functionName))
+
+
         self.graph.addRuleNode(ctx)
         
 
@@ -620,6 +638,9 @@ class CustomRubyListener(RubyListener):
 
         scope.addVariable(variable)
         self.scopeStack.append(scope)
+
+        vatText = ctx.var_id.getText()
+
         self.graph.addRuleNode(ctx)
         
 
@@ -739,6 +760,32 @@ class CustomRubyListener(RubyListener):
 
     # Enter a parse tree produced by RubyParser#dynamic.
     def enterDynamic(self, ctx:RubyParser.DynamicContext):
+        child = ctx.getChild(0)
+        isId = isinstance(child, RubyParser.IdContext)
+        isArraySelector = isinstance(child, RubyParser.Array_selectorContext)
+
+        # если dynamic переходит в переменную
+        if isId:
+            variableName = ctx.getText()
+            # проверяем есть ли вообще такая переменная в текущем скоупе или в одном из родительском
+            currentScope = self.scopeStack.pop()
+            isVariableAvaliable = self.isVariableInScope(currentScope, variableName)
+            if isVariableAvaliable:
+                self.scopeStack.append(currentScope)
+            else:
+                raise Exception("Variable < {0} > is not defined".format(variableName))
+        elif isArraySelector:
+            arrayNode = child.getChild(0)
+            arrayName = arrayNode.getText()
+
+            currentScope = self.scopeStack.pop()
+            isVariableAvaliable = self.isVariableInScope(currentScope, arrayName)
+            if isVariableAvaliable:
+                self.scopeStack.append(currentScope)
+            else:
+                raise Exception("Array < {0} > is not defined".format(arrayName))
+        
+            
         self.graph.addRuleNode(ctx)
         
 

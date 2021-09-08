@@ -5,6 +5,8 @@ def foo (arg1, arg2, arg3)
         b = 99
         return b
     end
+    c=barr(b)
+    barr(a)
 end
 
 def bazz(arg2)

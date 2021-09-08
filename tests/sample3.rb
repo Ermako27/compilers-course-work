@@ -1,6 +1,6 @@
 def foo (arg1, arg2, arg3)
     intVar = 42
-    dynVar = a / 2
+    dynVar = arg1 / 2
     arrVar = []
     fullArrVar = [9, 8]
     fullArrVar[0] = 5
@@ -10,13 +10,13 @@ def foo (arg1, arg2, arg3)
 
     def barr(arg2)
         b = 99
-        dynVar = a / 2
+        dynVar = arg2 / 2
         arrVar = []
         return b
     end
 
     funcCallVar = barr(intVar)
-    return b
+    return floatVar
 end
 
 def bazz(arg2)

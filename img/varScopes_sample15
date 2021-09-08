@@ -1,0 +1,107 @@
+digraph G {
+
+
+42503907984017659154400837191560963906 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>prog</td>
+            <td>global</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>bar</td>
+    <td>function_definition</td>
+    <td></td>
+</tr>
+<tr>
+    <td>foo</td>
+    <td>function_definition</td>
+    <td></td>
+</tr>
+         </table>
+>];
+42503907984017659154400837191560963906 -> 203595252502584597552820464814481875813
+42503907984017659154400837191560963906 -> 69879027565855523638659423870820342630
+
+203595252502584597552820464814481875813 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>bar</td>
+            <td>function</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>arg</td>
+    <td>argument</td>
+    <td></td>
+</tr>
+<tr>
+    <td>result</td>
+    <td>dynamic_assignment</td>
+    <td>arg/2</td>
+</tr>
+         </table>
+>];
+
+69879027565855523638659423870820342630 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>foo</td>
+            <td>function</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>arg</td>
+    <td>argument</td>
+    <td></td>
+</tr>
+<tr>
+    <td>divided</td>
+    <td>dynamic_assignment</td>
+    <td>bar(10)</td>
+</tr>
+<tr>
+    <td>result</td>
+    <td>dynamic_assignment</td>
+    <td>bar(arg)+2</td>
+</tr>
+<tr>
+    <td>complex</td>
+    <td>dynamic_assignment</td>
+    <td>(divided*result)+(divided/result)</td>
+</tr>
+         </table>
+>];}

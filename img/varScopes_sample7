@@ -1,0 +1,82 @@
+digraph G {
+
+
+166374613977791739361303833093932055208 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>prog</td>
+            <td>global</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>myVar2</td>
+    <td>int</td>
+    <td>30*2+1</td>
+</tr>
+         </table>
+>];
+166374613977791739361303833093932055208 -> 250149319556061786829017172793379263082
+166374613977791739361303833093932055208 -> 300009146360597855592037757355832362048
+
+250149319556061786829017172793379263082 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>if_statement</td>
+            <td>block</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>newVar2</td>
+    <td>int</td>
+    <td>20</td>
+</tr>
+         </table>
+>];
+
+300009146360597855592037757355832362048 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>else_token</td>
+            <td>block</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>newVar2</td>
+    <td>int</td>
+    <td>40</td>
+</tr>
+         </table>
+>];}

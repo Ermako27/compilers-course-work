@@ -1,0 +1,6 @@
+// The Round Table
+digraph {
+	prog [label=prog]
+	foo [label=foo]
+	prog -> foo
+}

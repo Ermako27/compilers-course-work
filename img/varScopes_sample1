@@ -1,0 +1,97 @@
+digraph G {
+
+
+44032942730274998280093589786581332951 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>prog</td>
+            <td>global</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>foo</td>
+    <td>function_definition</td>
+    <td></td>
+</tr>
+         </table>
+>];
+44032942730274998280093589786581332951 -> 95736171072915013695296041326412439277
+
+95736171072915013695296041326412439277 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>foo</td>
+            <td>function</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>arg1</td>
+    <td>argument</td>
+    <td></td>
+</tr>
+<tr>
+    <td>a</td>
+    <td>int</td>
+    <td>42</td>
+</tr>
+<tr>
+    <td>barr</td>
+    <td>function_definition</td>
+    <td></td>
+</tr>
+         </table>
+>];
+95736171072915013695296041326412439277 -> 4262345878232536126749281202669415839
+
+4262345878232536126749281202669415839 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>barr</td>
+            <td>function</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>arg2</td>
+    <td>argument</td>
+    <td></td>
+</tr>
+<tr>
+    <td>b</td>
+    <td>int</td>
+    <td>99</td>
+</tr>
+         </table>
+>];}

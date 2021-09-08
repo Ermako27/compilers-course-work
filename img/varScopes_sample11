@@ -1,0 +1,134 @@
+digraph G {
+
+
+234649233564410157793495867397702631857 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>prog</td>
+            <td>global</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>mas</td>
+    <td>array</td>
+    <td>[1,2,3]</td>
+</tr>
+<tr>
+    <td>j</td>
+    <td>int</td>
+    <td>10</td>
+</tr>
+<tr>
+    <td>counter</td>
+    <td>int</td>
+    <td>0</td>
+</tr>
+<tr>
+    <td>step</td>
+    <td>int</td>
+    <td>1</td>
+</tr>
+<tr>
+    <td>foo</td>
+    <td>function_definition</td>
+    <td></td>
+</tr>
+         </table>
+>];
+234649233564410157793495867397702631857 -> 149603991412948101356882257841175802539
+
+149603991412948101356882257841175802539 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>foo</td>
+            <td>function</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+         </table>
+>];
+149603991412948101356882257841175802539 -> 193442836891695683981810396446065451808
+
+193442836891695683981810396446065451808 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>while_statement</td>
+            <td>block</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>buf</td>
+    <td>dynamic_assignment</td>
+    <td>mas[j]</td>
+</tr>
+<tr>
+    <td>j</td>
+    <td>int</td>
+    <td>1</td>
+</tr>
+         </table>
+>];
+193442836891695683981810396446065451808 -> 318631520507891480584533391097586410191
+
+318631520507891480584533391097586410191 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>for_statement</td>
+            <td>block</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>i</td>
+    <td>int</td>
+    <td>0</td>
+</tr>
+<tr>
+    <td>counter</td>
+    <td>dynamic_assignment</td>
+    <td>counter+1</td>
+</tr>
+         </table>
+>];}

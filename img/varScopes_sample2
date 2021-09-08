@@ -1,0 +1,154 @@
+digraph G {
+
+
+93919722381307567179076800993552475399 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>prog</td>
+            <td>global</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>foo</td>
+    <td>function_definition</td>
+    <td></td>
+</tr>
+<tr>
+    <td>bazz</td>
+    <td>function_definition</td>
+    <td></td>
+</tr>
+         </table>
+>];
+93919722381307567179076800993552475399 -> 125768537611360046993126985699506552051
+93919722381307567179076800993552475399 -> 64948408586973776865016697203495141625
+
+125768537611360046993126985699506552051 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>foo</td>
+            <td>function</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>arg1</td>
+    <td>argument</td>
+    <td></td>
+</tr>
+<tr>
+    <td>arg2</td>
+    <td>argument</td>
+    <td></td>
+</tr>
+<tr>
+    <td>arg3</td>
+    <td>argument</td>
+    <td></td>
+</tr>
+<tr>
+    <td>a</td>
+    <td>int</td>
+    <td>42</td>
+</tr>
+<tr>
+    <td>b</td>
+    <td>dynamic_assignment</td>
+    <td>a/2</td>
+</tr>
+<tr>
+    <td>barr</td>
+    <td>function_definition</td>
+    <td></td>
+</tr>
+<tr>
+    <td>c</td>
+    <td>dynamic_assignment</td>
+    <td>barr(b)</td>
+</tr>
+         </table>
+>];
+125768537611360046993126985699506552051 -> 42046334958864442963825641351921340486
+
+42046334958864442963825641351921340486 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>barr</td>
+            <td>function</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>arg2</td>
+    <td>argument</td>
+    <td></td>
+</tr>
+<tr>
+    <td>b</td>
+    <td>int</td>
+    <td>99</td>
+</tr>
+         </table>
+>];
+
+64948408586973776865016697203495141625 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>bazz</td>
+            <td>function</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>arg2</td>
+    <td>argument</td>
+    <td></td>
+</tr>
+<tr>
+    <td>b</td>
+    <td>int</td>
+    <td>99</td>
+</tr>
+         </table>
+>];}

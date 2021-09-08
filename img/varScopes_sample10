@@ -1,0 +1,141 @@
+digraph G {
+
+
+233000453355319402961123359093990794350 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>prog</td>
+            <td>global</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>myVar1</td>
+    <td>int</td>
+    <td>10</td>
+</tr>
+<tr>
+    <td>deepVar</td>
+    <td>int</td>
+    <td>5</td>
+</tr>
+         </table>
+>];
+233000453355319402961123359093990794350 -> 48731897137022385468237469416560363369
+233000453355319402961123359093990794350 -> 336365744657728619762103031054775965698
+
+48731897137022385468237469416560363369 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>if_statement</td>
+            <td>block</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>newVr1</td>
+    <td>int</td>
+    <td>20</td>
+</tr>
+         </table>
+>];
+48731897137022385468237469416560363369 -> 258119075053514781811889165533282927560
+48731897137022385468237469416560363369 -> 249777435013338348833659335035523026413
+
+258119075053514781811889165533282927560 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>if_statement</td>
+            <td>block</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>lessVar</td>
+    <td>int</td>
+    <td>1</td>
+</tr>
+         </table>
+>];
+
+249777435013338348833659335035523026413 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>else_token</td>
+            <td>block</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>greaterVar</td>
+    <td>int</td>
+    <td>2</td>
+</tr>
+         </table>
+>];
+
+336365744657728619762103031054775965698 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>else_token</td>
+            <td>block</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>myVar1</td>
+    <td>int</td>
+    <td>30</td>
+</tr>
+         </table>
+>];}

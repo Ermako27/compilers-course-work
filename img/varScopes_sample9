@@ -1,0 +1,55 @@
+digraph G {
+
+
+32597399057825097415243705244845277785 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>prog</td>
+            <td>global</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>myVar4</td>
+    <td>int</td>
+    <td>50*2+1</td>
+</tr>
+         </table>
+>];
+32597399057825097415243705244845277785 -> 54112167438851608193141245689084536114
+
+54112167438851608193141245689084536114 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>if_statement</td>
+            <td>block</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>newVr4</td>
+    <td>int</td>
+    <td>20</td>
+</tr>
+         </table>
+>];}

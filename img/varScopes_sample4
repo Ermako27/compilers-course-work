@@ -1,0 +1,75 @@
+digraph G {
+
+
+251742207617844705524490714700688195320 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>prog</td>
+            <td>global</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>foo</td>
+    <td>function_definition</td>
+    <td></td>
+</tr>
+         </table>
+>];
+251742207617844705524490714700688195320 -> 320014347731472819983173687841961763770
+
+320014347731472819983173687841961763770 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>foo</td>
+            <td>function</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>a</td>
+    <td>int</td>
+    <td>1</td>
+</tr>
+<tr>
+    <td>b</td>
+    <td>int</td>
+    <td>2</td>
+</tr>
+<tr>
+    <td>c</td>
+    <td>int</td>
+    <td>3</td>
+</tr>
+<tr>
+    <td>var</td>
+    <td>dynamic_assignment</td>
+    <td>a/2+c</td>
+</tr>
+<tr>
+    <td>var2</td>
+    <td>dynamic_assignment</td>
+    <td>(a+b)/2</td>
+</tr>
+         </table>
+>];}

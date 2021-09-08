@@ -4,6 +4,7 @@ class Scope:
     def __init__(self, name, type) -> None:
         self.name = name
         self.type = type
+        self.parentScope = None
         self.childScopes = []
         self.variables = []
         self.uid = uuid.uuid4().int
@@ -20,7 +21,10 @@ class Scope:
 
 
     def addScope(self, scope):
+        scope.parentScope = self
         self.childScopes.append(scope)
+        
+        
 
 
 class ScopeVariable:

@@ -1,0 +1,60 @@
+digraph G {
+
+
+128743967119567010076120960510926230422 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>prog</td>
+            <td>global</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>a</td>
+    <td>int</td>
+    <td>1</td>
+</tr>
+<tr>
+    <td>b</td>
+    <td>dynamic_assignment</td>
+    <td>a</td>
+</tr>
+<tr>
+    <td>foo</td>
+    <td>function_definition</td>
+    <td></td>
+</tr>
+         </table>
+>];
+128743967119567010076120960510926230422 -> 36875065538062108300125226279726259635
+
+36875065538062108300125226279726259635 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>foo</td>
+            <td>function</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+         </table>
+>];}

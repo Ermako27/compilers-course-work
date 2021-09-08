@@ -1,0 +1,286 @@
+digraph G {
+
+
+299005586075513486041959974517561255697 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>prog</td>
+            <td>global</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>foo</td>
+    <td>function_definition</td>
+    <td></td>
+</tr>
+         </table>
+>];
+299005586075513486041959974517561255697 -> 164961910614964674214185356778730096273
+
+164961910614964674214185356778730096273 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>foo</td>
+            <td>function</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>myVar1</td>
+    <td>int</td>
+    <td>10*2</td>
+</tr>
+<tr>
+    <td>myVar2</td>
+    <td>int</td>
+    <td>30*2+1</td>
+</tr>
+<tr>
+    <td>myVar3</td>
+    <td>int</td>
+    <td>40*2+1</td>
+</tr>
+<tr>
+    <td>myVar4</td>
+    <td>int</td>
+    <td>50*2+1</td>
+</tr>
+         </table>
+>];
+164961910614964674214185356778730096273 -> 15303953640999694678678487110847472730
+164961910614964674214185356778730096273 -> 260430969564502725584369429678480809400
+164961910614964674214185356778730096273 -> 242898983745730502346140741019916422778
+164961910614964674214185356778730096273 -> 304868803450833759265575168621981193802
+164961910614964674214185356778730096273 -> 219233641184356001910822106826100241865
+164961910614964674214185356778730096273 -> 194875701818586142216965911052614751333
+164961910614964674214185356778730096273 -> 37555354078623076903288289160154136417
+164961910614964674214185356778730096273 -> 151034847291993645888127483549741994617
+
+15303953640999694678678487110847472730 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>if_statement</td>
+            <td>block</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>newVr1</td>
+    <td>int</td>
+    <td>20</td>
+</tr>
+         </table>
+>];
+
+260430969564502725584369429678480809400 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>elsif_statement</td>
+            <td>block</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>newVar1</td>
+    <td>int</td>
+    <td>30</td>
+</tr>
+         </table>
+>];
+
+242898983745730502346140741019916422778 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>else_token</td>
+            <td>block</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>newVar1</td>
+    <td>int</td>
+    <td>40</td>
+</tr>
+         </table>
+>];
+
+304868803450833759265575168621981193802 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>if_statement</td>
+            <td>block</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>newVr2</td>
+    <td>int</td>
+    <td>20</td>
+</tr>
+         </table>
+>];
+
+219233641184356001910822106826100241865 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>else_token</td>
+            <td>block</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>newVar2</td>
+    <td>int</td>
+    <td>40</td>
+</tr>
+         </table>
+>];
+
+194875701818586142216965911052614751333 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>if_statement</td>
+            <td>block</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>newVr3</td>
+    <td>int</td>
+    <td>20</td>
+</tr>
+         </table>
+>];
+
+37555354078623076903288289160154136417 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>elsif_statement</td>
+            <td>block</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>newVar3</td>
+    <td>int</td>
+    <td>30</td>
+</tr>
+         </table>
+>];
+
+151034847291993645888127483549741994617 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>if_statement</td>
+            <td>block</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>newVr4</td>
+    <td>int</td>
+    <td>20</td>
+</tr>
+         </table>
+>];}
