@@ -1,12 +1,7 @@
 from RubyListener import RubyListener
 from RubyParser import RubyParser
-from parseTreeProperty import ParseTreeProperty;
-from hashtable import HashTable
-from io import BytesIO
-from llist import sllist, sllistnode
 
 from scope import Scope, ScopeVariable
-from functionCall import FunctionCall
 from functionScope import FunctionScope
 
 from graph import Graph
@@ -14,28 +9,6 @@ from graph import Graph
 class CustomRubyListener(RubyListener):     
     def __init__(self, codeFileName) -> None:
         super().__init__()
-        self.intValues = ParseTreeProperty()
-        self.floatValues = ParseTreeProperty()
-        self.stringValues = ParseTreeProperty()
-        self.whichValues = ParseTreeProperty()
-
-        self.stackOutputStreams = []
-        self.functionDefinitionStreams = HashTable(5000)
-        self.mainStream = BytesIO()
-        self.funcStream = BytesIO()
-        self.errorStream = BytesIO()
-
-        self.semanticErrorNum = 0
-        self.numStr = 1
-        self.numReg = 0
-        self.numRegInt = 0
-        self.numLabel = 0
-        self.stackLoopLabels = []
-        self.mainDefinitions = sllist()
-        self.functionCalls = []
-        self.stackDefinitions = []
-        # ========================================
-
         self.scopeStack = [] # для построение таблицы переменных, тут лежат все скоупы, и функциональные и блочные и глобальные
         self.functionScopeStack = [] # для построения графа вызова, тут только функциональные
         self.graph = Graph(codeFileName)

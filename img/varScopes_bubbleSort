@@ -1,7 +1,7 @@
 digraph G {
 
 
-259726024681154675257043029334098126608 [
+154322129872747616516737338718324578916 [
     shape=plaintext
     label=<
         <table border='0' cellborder='1' color='black' cellspacing='0'>
@@ -20,144 +20,20 @@ digraph G {
         </tr>
         
 <tr>
-    <td>foo</td>
+    <td>bubbleSort</td>
     <td>function_definition</td>
     <td></td>
 </tr>
 <tr>
-    <td>bazz</td>
-    <td>function_definition</td>
-    <td></td>
-</tr>
-         </table>
->];
-259726024681154675257043029334098126608 -> 213271651960447735387082897794109146002
-259726024681154675257043029334098126608 -> 130061706785029851345152846225554845398
-
-213271651960447735387082897794109146002 [
-    shape=plaintext
-    label=<
-        <table border='0' cellborder='1' color='black' cellspacing='0'>
-        <tr PORT="header">
-            <td>scope name</td>
-            <td>scope type</td>
-        </tr>
-        <tr>
-            <td>foo</td>
-            <td>function</td>
-        </tr>
-        <tr>
-            <td>variable name</td>
-            <td>variable type</td>
-            <td>variable value</td>
-        </tr>
-        
-<tr>
-    <td>arg1</td>
-    <td>argument</td>
-    <td></td>
-</tr>
-<tr>
-    <td>arg2</td>
-    <td>argument</td>
-    <td></td>
-</tr>
-<tr>
-    <td>arg3</td>
-    <td>argument</td>
-    <td></td>
-</tr>
-<tr>
-    <td>intVar</td>
-    <td>int</td>
-    <td>42</td>
-</tr>
-<tr>
-    <td>dynVar</td>
-    <td>dynamic_assignment</td>
-    <td>arg1/2</td>
-</tr>
-<tr>
-    <td>arrVar</td>
     <td>array</td>
-    <td>[]</td>
-</tr>
-<tr>
-    <td>fullArrVar</td>
-    <td>array</td>
-    <td>[9,8]</td>
-</tr>
-<tr>
-    <td>strVar</td>
-    <td>string</td>
-    <td>'hello'</td>
-</tr>
-<tr>
-    <td>floatVar</td>
-    <td>string</td>
-    <td>9.9</td>
-</tr>
-<tr>
-    <td>arrayOfVar</td>
-    <td>array</td>
-    <td>[intVar,floatVar]</td>
-</tr>
-<tr>
-    <td>barr</td>
-    <td>function_definition</td>
-    <td></td>
-</tr>
-<tr>
-    <td>funcCallVar</td>
-    <td>dynamic_assignment</td>
-    <td>barr(intVar)</td>
-</tr>
-         </table>
->];
-213271651960447735387082897794109146002 -> 91215587986302477003243298296618456202
-
-91215587986302477003243298296618456202 [
-    shape=plaintext
-    label=<
-        <table border='0' cellborder='1' color='black' cellspacing='0'>
-        <tr PORT="header">
-            <td>scope name</td>
-            <td>scope type</td>
-        </tr>
-        <tr>
-            <td>barr</td>
-            <td>function</td>
-        </tr>
-        <tr>
-            <td>variable name</td>
-            <td>variable type</td>
-            <td>variable value</td>
-        </tr>
-        
-<tr>
-    <td>arg2</td>
-    <td>argument</td>
-    <td></td>
-</tr>
-<tr>
-    <td>b</td>
-    <td>int</td>
-    <td>99</td>
-</tr>
-<tr>
-    <td>dynVar</td>
-    <td>dynamic_assignment</td>
-    <td>arg2/2</td>
-</tr>
-<tr>
-    <td>arrVar</td>
     <td>array</td>
     <td>[]</td>
 </tr>
          </table>
 >];
+154322129872747616516737338718324578916 -> 314671785632595390031095789720192442067
 
-130061706785029851345152846225554845398 [
+314671785632595390031095789720192442067 [
     shape=plaintext
     label=<
         <table border='0' cellborder='1' color='black' cellspacing='0'>
@@ -166,7 +42,7 @@ digraph G {
             <td>scope type</td>
         </tr>
         <tr>
-            <td>bazz</td>
+            <td>bubbleSort</td>
             <td>function</td>
         </tr>
         <tr>
@@ -176,14 +52,95 @@ digraph G {
         </tr>
         
 <tr>
-    <td>arg2</td>
+    <td>a</td>
     <td>argument</td>
     <td></td>
 </tr>
 <tr>
-    <td>b</td>
+    <td>size</td>
     <td>int</td>
-    <td>99</td>
+    <td>10</td>
+</tr>
+         </table>
+>];
+314671785632595390031095789720192442067 -> 266013190739021634082013733840252124691
+
+266013190739021634082013733840252124691 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>for_statement</td>
+            <td>block</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>i</td>
+    <td>int</td>
+    <td>0</td>
+</tr>
+         </table>
+>];
+266013190739021634082013733840252124691 -> 148535490824631480768500344253633891094
+
+148535490824631480768500344253633891094 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>for_statement</td>
+            <td>block</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>j</td>
+    <td>dynamic_assignment</td>
+    <td>size-1</td>
+</tr>
+         </table>
+>];
+148535490824631480768500344253633891094 -> 287500213907609912982031122624765126568
+
+287500213907609912982031122624765126568 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>if_statement</td>
+            <td>block</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>x</td>
+    <td>dynamic_assignment</td>
+    <td>a[j-1]</td>
 </tr>
          </table>
 >];}
