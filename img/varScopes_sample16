@@ -1,0 +1,655 @@
+digraph G {
+
+
+20536166153737397721884839322689379101 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>prog</td>
+            <td>global</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>foo1</td>
+    <td>function_definition</td>
+    <td></td>
+</tr>
+<tr>
+    <td>foo2</td>
+    <td>function_definition</td>
+    <td></td>
+</tr>
+<tr>
+    <td>foo3</td>
+    <td>function_definition</td>
+    <td></td>
+</tr>
+<tr>
+    <td>partition</td>
+    <td>function_definition</td>
+    <td></td>
+</tr>
+<tr>
+    <td>quicksort</td>
+    <td>function_definition</td>
+    <td></td>
+</tr>
+<tr>
+    <td>unsorted</td>
+    <td>array</td>
+    <td>[5,6,3,1,8,4]</td>
+</tr>
+<tr>
+    <td>a</td>
+    <td>dynamic_assignment</td>
+    <td>quicksort(unsorted,1,2)</td>
+</tr>
+         </table>
+>];
+20536166153737397721884839322689379101 -> 303139486213626032649839371144390435529
+20536166153737397721884839322689379101 -> 168134109095588278399884186093193888829
+20536166153737397721884839322689379101 -> 105075435842728183857742575768180792397
+20536166153737397721884839322689379101 -> 204527487063634089071749811765159586806
+20536166153737397721884839322689379101 -> 209741104374355983382819700680442578286
+
+303139486213626032649839371144390435529 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>foo1</td>
+            <td>function</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>arg1</td>
+    <td>argument</td>
+    <td></td>
+</tr>
+<tr>
+    <td>size</td>
+    <td>int</td>
+    <td>10</td>
+</tr>
+<tr>
+    <td>a</td>
+    <td>array</td>
+    <td>[]</td>
+</tr>
+         </table>
+>];
+303139486213626032649839371144390435529 -> 168792461509653189573356253226711412408
+
+168792461509653189573356253226711412408 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>for_statement</td>
+            <td>block</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>i</td>
+    <td>int</td>
+    <td>0</td>
+</tr>
+         </table>
+>];
+168792461509653189573356253226711412408 -> 291852299368406690123664896311784307558
+
+291852299368406690123664896311784307558 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>for_statement</td>
+            <td>block</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>j</td>
+    <td>dynamic_assignment</td>
+    <td>size-1</td>
+</tr>
+         </table>
+>];
+291852299368406690123664896311784307558 -> 37226935317722069302175256606576572403
+
+37226935317722069302175256606576572403 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>if_statement</td>
+            <td>block</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>x</td>
+    <td>dynamic_assignment</td>
+    <td>a[j-1]</td>
+</tr>
+         </table>
+>];
+
+168134109095588278399884186093193888829 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>foo2</td>
+            <td>function</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>arg1</td>
+    <td>argument</td>
+    <td></td>
+</tr>
+<tr>
+    <td>arg2</td>
+    <td>argument</td>
+    <td></td>
+</tr>
+<tr>
+    <td>first</td>
+    <td>int</td>
+    <td>1</td>
+</tr>
+<tr>
+    <td>i</td>
+    <td>dynamic_assignment</td>
+    <td>first</td>
+</tr>
+<tr>
+    <td>last</td>
+    <td>int</td>
+    <td>10</td>
+</tr>
+<tr>
+    <td>arr</td>
+    <td>array</td>
+    <td>[]</td>
+</tr>
+<tr>
+    <td>pivot</td>
+    <td>int</td>
+    <td>10</td>
+</tr>
+<tr>
+    <td>p_index</td>
+    <td>int</td>
+    <td>11</td>
+</tr>
+<tr>
+    <td>temp</td>
+    <td>dynamic_assignment</td>
+    <td>arr[p_index]</td>
+</tr>
+         </table>
+>];
+168134109095588278399884186093193888829 -> 187966490185887720232909942804706770036
+
+187966490185887720232909942804706770036 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>while_statement</td>
+            <td>block</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>i</td>
+    <td>int</td>
+    <td>1</td>
+</tr>
+         </table>
+>];
+187966490185887720232909942804706770036 -> 19131184339278533713950356693122020118
+
+19131184339278533713950356693122020118 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>if_statement</td>
+            <td>block</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>temp</td>
+    <td>dynamic_assignment</td>
+    <td>arr[i]</td>
+</tr>
+<tr>
+    <td>p_index</td>
+    <td>int</td>
+    <td>1</td>
+</tr>
+         </table>
+>];
+
+105075435842728183857742575768180792397 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>foo3</td>
+            <td>function</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>arg1</td>
+    <td>argument</td>
+    <td></td>
+</tr>
+<tr>
+    <td>arg2</td>
+    <td>argument</td>
+    <td></td>
+</tr>
+<tr>
+    <td>arg3</td>
+    <td>argument</td>
+    <td></td>
+</tr>
+<tr>
+    <td>first</td>
+    <td>int</td>
+    <td>1</td>
+</tr>
+<tr>
+    <td>i</td>
+    <td>dynamic_assignment</td>
+    <td>first</td>
+</tr>
+<tr>
+    <td>last</td>
+    <td>int</td>
+    <td>10</td>
+</tr>
+<tr>
+    <td>arr</td>
+    <td>array</td>
+    <td>[]</td>
+</tr>
+<tr>
+    <td>pivot</td>
+    <td>int</td>
+    <td>10</td>
+</tr>
+<tr>
+    <td>p_index</td>
+    <td>int</td>
+    <td>10</td>
+</tr>
+<tr>
+    <td>temp</td>
+    <td>dynamic_assignment</td>
+    <td>arr[p_index]</td>
+</tr>
+         </table>
+>];
+105075435842728183857742575768180792397 -> 247363759168424854532976141065271175519
+
+247363759168424854532976141065271175519 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>while_statement</td>
+            <td>block</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>i</td>
+    <td>int</td>
+    <td>1</td>
+</tr>
+         </table>
+>];
+247363759168424854532976141065271175519 -> 255480328674121002942219587352746321001
+
+255480328674121002942219587352746321001 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>if_statement</td>
+            <td>block</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>temp</td>
+    <td>dynamic_assignment</td>
+    <td>arr[i]</td>
+</tr>
+<tr>
+    <td>p_index</td>
+    <td>int</td>
+    <td>1</td>
+</tr>
+         </table>
+>];
+
+204527487063634089071749811765159586806 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>partition</td>
+            <td>function</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>arr</td>
+    <td>argument</td>
+    <td></td>
+</tr>
+<tr>
+    <td>first</td>
+    <td>argument</td>
+    <td></td>
+</tr>
+<tr>
+    <td>last</td>
+    <td>argument</td>
+    <td></td>
+</tr>
+<tr>
+    <td>pivot</td>
+    <td>dynamic_assignment</td>
+    <td>arr[last]</td>
+</tr>
+<tr>
+    <td>p_index</td>
+    <td>dynamic_assignment</td>
+    <td>first</td>
+</tr>
+<tr>
+    <td>printer</td>
+    <td>function_definition</td>
+    <td></td>
+</tr>
+<tr>
+    <td>i</td>
+    <td>dynamic_assignment</td>
+    <td>first</td>
+</tr>
+<tr>
+    <td>c</td>
+    <td>dynamic_assignment</td>
+    <td>printer()</td>
+</tr>
+<tr>
+    <td>temp</td>
+    <td>dynamic_assignment</td>
+    <td>arr[p_index]</td>
+</tr>
+         </table>
+>];
+204527487063634089071749811765159586806 -> 289986066607375886840495660474144824660
+204527487063634089071749811765159586806 -> 276707152223711136694277665669503299993
+
+289986066607375886840495660474144824660 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>printer</td>
+            <td>function</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>a</td>
+    <td>string</td>
+    <td>'hello'</td>
+</tr>
+<tr>
+    <td>b</td>
+    <td>string</td>
+    <td>'world'</td>
+</tr>
+         </table>
+>];
+
+276707152223711136694277665669503299993 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>while_statement</td>
+            <td>block</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>i</td>
+    <td>int</td>
+    <td>1</td>
+</tr>
+         </table>
+>];
+276707152223711136694277665669503299993 -> 47817291839550536559402891929777686252
+
+47817291839550536559402891929777686252 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>if_statement</td>
+            <td>block</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>temp</td>
+    <td>dynamic_assignment</td>
+    <td>arr[i]</td>
+</tr>
+<tr>
+    <td>p_index</td>
+    <td>int</td>
+    <td>1</td>
+</tr>
+         </table>
+>];
+
+209741104374355983382819700680442578286 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>quicksort</td>
+            <td>function</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>arr</td>
+    <td>argument</td>
+    <td></td>
+</tr>
+<tr>
+    <td>first</td>
+    <td>argument</td>
+    <td></td>
+</tr>
+<tr>
+    <td>last</td>
+    <td>argument</td>
+    <td></td>
+</tr>
+         </table>
+>];
+209741104374355983382819700680442578286 -> 8591355279740305786194824715818518083
+
+8591355279740305786194824715818518083 [
+    shape=plaintext
+    label=<
+        <table border='0' cellborder='1' color='black' cellspacing='0'>
+        <tr PORT="header">
+            <td>scope name</td>
+            <td>scope type</td>
+        </tr>
+        <tr>
+            <td>if_statement</td>
+            <td>block</td>
+        </tr>
+        <tr>
+            <td>variable name</td>
+            <td>variable type</td>
+            <td>variable value</td>
+        </tr>
+        
+<tr>
+    <td>p_index</td>
+    <td>dynamic_assignment</td>
+    <td>partition(arr,first,last)</td>
+</tr>
+         </table>
+>];}
